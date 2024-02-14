@@ -1,0 +1,24 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: check-deployment
+spec:
+  rules:
+  - name: check-for-replica
+    match:
+      all:
+      - resources:
+          kinds:
+          - Deployment
+          - Deployment/scale
+    preconditions:
+      any:
+      - key: "{{ request.object.metadata.labels.env }}"
+        operator: Equals
+        value: staging
+
+    mutate:
+        patchesJson6902: |-
+          - path: "/spec/replicas"
+            op: add
+            value: 2

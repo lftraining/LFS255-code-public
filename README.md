@@ -9,3 +9,12 @@ This repository maintains the code used in the labs chapter-wise.
 * Chapter 5: Enforcing Policies
     * Lab 5.1: Policy Creation on Local Kubernetes Cluster
     * Lab 5.3: Working with Variables
+
+* Chapter 6: Policy Mutations
+    * Real World Example
+    * Lab 6.1: Mutate Resources Using RFC6902 JSONPatch Method
+    * Lab 6.2: Mutate Resources Using the Strategic Merge Patch Method
+    * Iterations
+    * Lab 6.3: Mutate existing resource using the Kyverno Policy
+    * Cascaded Mutation
+    * Lab 6.4: Using Cascaded Mutations
