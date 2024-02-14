@@ -1,0 +1,17 @@
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: limit_deployment_replica_test
+policies:
+  - ./limit_deployment_replica.yaml
+resources:
+  - ./deployment_staging.yaml
+results:
+  - policy: check-deployment
+    rule: check-for-replica
+    resources:
+      - web
+    kind: Deployment
+    patchedResource: ./patched_resource.yaml
+    result: pass
+

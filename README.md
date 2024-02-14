@@ -18,3 +18,7 @@ This repository maintains the code used in the labs chapter-wise.
     * Lab 6.3: Mutate existing resource using the Kyverno Policy
     * Cascaded Mutation
     * Lab 6.4: Using Cascaded Mutations
+
+* Chapter 7: Policy Validation and Testing
+    * Lab 7.2: Writing Tests for Validation Policy
+    * Lab 7.3: Writing Tests for Mutation Policy
