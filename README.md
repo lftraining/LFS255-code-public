@@ -22,3 +22,6 @@ This repository maintains the code used in the labs chapter-wise.
 * Chapter 7: Policy Validation and Testing
     * Lab 7.2: Writing Tests for Validation Policy
     * Lab 7.3: Writing Tests for Mutation Policy
+
+* Chapter 8: Monitoring and Troubleshooting
+    * Lab 8.2: Setting up Prometheus and Viewing Kyverno-Related Alerts
