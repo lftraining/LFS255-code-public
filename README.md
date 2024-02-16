@@ -38,3 +38,6 @@ This repository maintains the code used in the labs chapter-wise.
     * Lab 11.1: Integrate Kyverno with CI/CD Pipeline
     * Lab 11.2: Integrate Kyverno with GitOps Workflow
     * Lab 11.3: Integrate Kyverno with the Security Scanner
+
+* Chapter 12: Multi-Cluster Policy Management
+    * Lab 12.1: Sync Kyverno Policies Across Multiple Clusters
