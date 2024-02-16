@@ -1,0 +1,9 @@
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata:
+  name: bob
+spec:
+  usages:
+  - client auth
+  signerName: kubernetes.io/kube-apiserver-client
+  request: <BASE64_ENCODED_CSR>

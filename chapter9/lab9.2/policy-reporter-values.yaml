@@ -1,0 +1,14 @@
+kyvernoPlugin:
+  enabled: true
+
+ui:
+  enabled: true
+  plugins:
+    kyverno: true
+  service:
+    type: NodePort
+
+target:
+  slack:
+    channel: alerts
+    secretRef: slack-config

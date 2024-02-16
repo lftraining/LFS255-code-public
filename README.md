@@ -25,3 +25,11 @@ This repository maintains the code used in the labs chapter-wise.
 
 * Chapter 8: Monitoring and Troubleshooting
     * Lab 8.2: Setting up Prometheus and Viewing Kyverno-Related Alerts
+
+* Chapter 9: Reporting in Kyverno
+    * Lab 9.2: Install Policy Reporter and Configure Custom Webhook
+
+* Chapter 10: Securing Kyverno
+    * Lab 10.1: Configure Read-Only Access to Policies
+    * Lab 10.2: Configure Network Policy in Kyverno
+    * Lab 10.3: Encrypt Kyverno Communications
