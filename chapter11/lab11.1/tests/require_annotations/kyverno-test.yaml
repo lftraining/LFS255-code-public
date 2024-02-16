@@ -1,0 +1,22 @@
+apiVersion: cli.kyverno.io/v1alpha1
+kind: Test
+metadata:
+  name: require_annotations_test
+policies:
+  - ./require_annotations.yaml
+resources:
+  - ./pod_with_annotation.yaml
+  - ./pod_without_annotation.yaml
+results:
+  - policy: require-annotations
+    rule: check-for-annotation
+    resources: 
+      - web-app-with-annotation
+    kind: Pod
+    result: pass
+  - policy: require-annotations
+    rule: check-for-annotation
+    resources: 
+      - web-app-without-annotation
+    kind: Pod
+    result: pass

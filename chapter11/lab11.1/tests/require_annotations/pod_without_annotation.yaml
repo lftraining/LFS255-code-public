@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-app-without-annotation
+  namespace: default
+  labels:
+    run: web-app
+spec:
+  containers:
+    - image: nginx:latest
+      name: nginx

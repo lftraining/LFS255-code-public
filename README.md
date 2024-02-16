@@ -33,3 +33,8 @@ This repository maintains the code used in the labs chapter-wise.
     * Lab 10.1: Configure Read-Only Access to Policies
     * Lab 10.2: Configure Network Policy in Kyverno
     * Lab 10.3: Encrypt Kyverno Communications
+
+* Chapter 11: Integration and Extensibility
+    * Lab 11.1: Integrate Kyverno with CI/CD Pipeline
+    * Lab 11.2: Integrate Kyverno with GitOps Workflow
+    * Lab 11.3: Integrate Kyverno with the Security Scanner

@@ -1,0 +1,26 @@
+name: Testing Policies using Kyverno CLI
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  kyverno_policy_test:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout respository
+        uses: actions/checkout@v4.1.1
+
+      - name: Setup Kyverno CLI
+        uses: kyverno/action-install-cli@v0.2.0
+        with:
+          release: 'v1.11.4'
+
+      - name: Verify Kyverno CLI installation
+        run: kyverno version
+
+      - name: Test the policy against the resource
+        run: kyverno test ./tests
