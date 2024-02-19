@@ -11,13 +11,14 @@ This repository maintains the code used in the labs chapter-wise.
     * Lab 5.3: Working with Variables
 
 * Chapter 6: Policy Mutations
-    * Real World Example
     * Lab 6.1: Mutate Resources Using RFC6902 JSONPatch Method
     * Lab 6.2: Mutate Resources Using the Strategic Merge Patch Method
-    * Iterations
     * Lab 6.3: Mutate existing resource using the Kyverno Policy
-    * Cascaded Mutation
     * Lab 6.4: Using Cascaded Mutations
+    * Demos
+        * Policy Mutations Real World Example
+        * Iterations in a Mutate Rule
+        * Cascaded Mutation
 
 * Chapter 7: Policy Validation and Testing
     * Lab 7.2: Writing Tests for Validation Policy

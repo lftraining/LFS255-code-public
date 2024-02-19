@@ -1,0 +1,32 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: deployments-require-labels-and-cpu-limit
+spec:
+  rules:
+  - name: deployment-require-dev-label
+    match:
+      any:
+      - resources:
+          kinds:
+          - Deployment
+    mutate:
+      patchStrategicMerge:
+        metadata:
+          labels:
+            env: dev
+  - name: check-for-cpu-limit
+    match:
+      all:
+      - resources:
+          kinds:
+          - Deployment
+          - Deployment/scale
+          selector:
+            matchLabels:
+              env: dev
+    mutate:
+        patchesJson6902: |-
+          - path: "/spec/template/spec/containers/0/resources/limits/cpu"
+            op: add
+            value: 1

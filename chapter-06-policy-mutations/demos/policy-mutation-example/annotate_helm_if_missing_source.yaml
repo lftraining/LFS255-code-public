@@ -1,0 +1,19 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: helm-pods-require-annotations
+spec:
+  rules:
+  - name: check-for-helm-pod-annotation
+    match:
+      all:
+      - resources:
+          kinds:
+          - Pod
+          names:
+          - "helm*"
+    mutate:
+      patchStrategicMerge:
+        metadata:
+          annotations:
+            +(corp.org/source): Helm Chart
