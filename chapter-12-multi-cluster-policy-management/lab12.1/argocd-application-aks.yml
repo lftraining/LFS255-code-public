@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: aks-cluster-policies
+  namespace: argocd
+spec:
+  destination:
+    name: aks-cluster
+    namespace: kyverno
+  source:
+    path: policies
+    repoURL: 'https://github.com/<username>/kyverno-policies-test'
+    targetRevision: HEAD
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      prune: false
+      selfHeal: false
