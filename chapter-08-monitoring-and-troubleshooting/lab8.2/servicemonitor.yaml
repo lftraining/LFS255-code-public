@@ -1,0 +1,66 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kyverno-admission-controller-metrics
+  namespace: kyverno
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: admission-controller
+  endpoints:
+  - port: metrics-port
+  jobLabel: app.kubernetes.io/component
+
+---
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kyverno-background-controller-metrics
+  namespace: kyverno
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: background-controller
+  endpoints:
+  - port: metrics-port
+  jobLabel: app.kubernetes.io/component
+
+---
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kyverno-cleanup-controller-metrics
+  namespace: kyverno
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: cleanup-controller
+  endpoints:
+  - port: metrics-port
+  jobLabel: app.kubernetes.io/component
+
+---
+
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: kyverno-reports-controller-metrics
+  namespace: kyverno
+  labels:
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/component: reports-controller
+  endpoints:
+  - port: metrics-port
+  jobLabel: app.kubernetes.io/component
+

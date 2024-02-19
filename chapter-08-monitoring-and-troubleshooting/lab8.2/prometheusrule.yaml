@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: kyverno-rules
+  namespace: kyverno
+  labels:
+    release: prometheus
+spec:
+  groups:
+  - name: kyverno.rules
+    rules:
+    - alert: KyvernoPolicyViolationsInDefaultNamespace
+      expr: |
+        increase(kyverno_policy_results_total{policy_type="cluster", policy_validation_mode="audit", resource_kind="Pod", resource_namespace="default", rule_execution_cause="admission_request", rule_result="fail", rule_type="validate"}[2m]) > 5
+      labels:
+        severity: warning
+      annotations:
+        summary: "Kyverno Policy Violations in Default Namespace"
+        description: "Kyverno policy violations in default namespace over a period of 2 minutes"
