@@ -1,0 +1,77 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: bob-all-access
+rules:
+#This rule allows full access to all core API resources with actions like get, list, watch, create, update, patch, delete
+- apiGroups:
+  - ""
+  resources:
+  - "*"
+  verbs:
+  - "*"
+#This rule allows all actions on all resources in the 'apps' API group
+- apiGroups:
+  - apps
+  resources:
+  - "*"
+  verbs:
+  - "*"
+#This rule allows all actions on all resources in the 'storage' API group
+- apiGroups:
+  - storage
+  resources:
+  - "*"
+  verbs:
+  - "*"
+#This rule allows all actions on all resources in the 'extensions' API group
+- apiGroups:
+  - extensions
+  resources:
+  - "*"
+  verbs:
+  - "*"
+#This rule allows all actions on all resources in the 'batch' API group
+- apiGroups:
+  - batch
+  resources:
+  - "*"
+  verbs:
+  - "*"
+#This rule allows all actions on all resources in the 'networking' API group
+- apiGroups:
+  - networking
+  resources:
+  - "*"
+  verbs:
+  - "*"
+#This rule allows all actions on all resources in the 'policy' API group
+- apiGroups:
+  - policy
+  resources:
+  - "*"
+  verbs:
+  - "*"
+#This rule allows 'get' and 'list' actions on 'clusterpolicies' resources in the 'kyverno.io' API group
+- apiGroups:
+  - kyverno.io
+  resources:
+  - clusterpolicies
+  verbs:
+  - get
+  - list
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: bob-all-access-binding
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: bob-all-access
+#Bind the bob-all-access ClusterRole to the user "bob"
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: bob
