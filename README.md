@@ -42,3 +42,5 @@ This repository maintains the code used in the labs chapter-wise.
 
 * Chapter 12: Multi-Cluster Policy Management
     * Lab 12.1: Sync Kyverno Policies Across Multiple Clusters
+
+**Note**: This repository contains only those chapters and its labs that have configuration files.
