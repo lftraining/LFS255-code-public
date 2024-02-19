@@ -1,0 +1,24 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: dev-deployment-replica-check
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+  - name: check-for-dev-deployment-replica
+    match:
+      any:
+      - resources:
+          kinds:
+          - Deployment
+    preconditions:
+      any:
+      - key: "{{ request.object.metadata.labels.env }}"
+        operator: Equals
+        value: dev
+    validate:
+      message: "The replica count needs to be 1"
+      pattern:
+        spec:
+          replicas: 1

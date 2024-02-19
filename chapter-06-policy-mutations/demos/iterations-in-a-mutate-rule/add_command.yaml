@@ -1,0 +1,20 @@
+apiVersion : kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: add-command
+spec:
+  rules:
+  - name: add-command-containers
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+    mutate:
+      foreach: 
+      - list: "request.object.spec.containers"
+        patchesJson6902: |-
+          - path: /spec/containers/{{elementIndex}}/command
+            op: add
+            value:
+            - ls

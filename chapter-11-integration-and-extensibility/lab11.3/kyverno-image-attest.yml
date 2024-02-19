@@ -1,0 +1,35 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: check-vulnerabilities
+spec:
+  validationFailureAction: Enforce
+  background: false
+  webhookTimeoutSeconds: 30
+  failurePolicy: Fail
+  rules:
+    - name: checking-vulnerability-scan-not-older-than-one-hour
+      match:
+        any:
+        - resources:
+            kinds:
+              - Pod
+      verifyImages:
+      - imageReferences:
+        - "*"
+        attestations:
+        - type: https://cosign.sigstore.dev/attestation/vuln/v1
+          conditions:
+          - all:
+            - key: "{{ time_since('','{{ metadata.scanFinishedOn }}', '') }}"
+              operator: LessThanOrEquals
+              value: "1h"
+          attestors:
+          - count: 1
+            entries:
+            - keys:
+                publicKeys: |-
+                  -----BEGIN PUBLIC KEY-----
+                  abc
+                  xyz
+                  -----END PUBLIC KEY-----

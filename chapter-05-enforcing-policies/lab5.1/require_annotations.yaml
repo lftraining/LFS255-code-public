@@ -1,0 +1,20 @@
+apiVersion: kyverno.io/v1
+kind: ClusterPolicy
+metadata:
+  name: require-annotations
+spec:
+  validationFailureAction: Enforce
+  background: true
+  rules:
+  - name: check-for-annotation
+    match:
+      any:
+      - resources:
+          kinds:
+          - Pod
+    validate:
+      message: "The annotation `corp.org/department` is required."
+      pattern:
+        metadata:
+          annotations:
+            corp.org/department: "?*"
