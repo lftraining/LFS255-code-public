@@ -26,7 +26,7 @@ spec:
             matchLabels:
               env: staging
     mutate:
-        patchesJson6902: |-
-          - path: "/spec/replicas"
-            op: add
-            value: 2
+      patchesJson6902: |-
+        - path: "/spec/replicas"
+          op: add
+          value: 2
