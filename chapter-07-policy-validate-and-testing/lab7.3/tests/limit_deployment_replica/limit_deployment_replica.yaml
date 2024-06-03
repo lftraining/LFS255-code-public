@@ -16,9 +16,8 @@ spec:
       - key: "{{ request.object.metadata.labels.env }}"
         operator: Equals
         value: staging
-
     mutate:
-        patchesJson6902: |-
-          - path: "/spec/replicas"
-            op: add
-            value: 2
+      patchesJson6902: |-
+        - path: "/spec/replicas"
+          op: add
+          value: 2

@@ -8,7 +8,7 @@ metadata:
   name: kyverno:update-namespace
 rules:
 - apiGroups:
-  - '*'
+  - ""
   resources:
   - namespaces
   verbs:
